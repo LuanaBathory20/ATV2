@@ -19,3 +19,4 @@ jobs:
       env:
         VERCEL_ORG_ID: ${{ secrets.VNYOfK6FxygWdi6VnRkRqZQw }}
         VERCEL_PROJECT_ID: ${{ secrets.prj_hkJXOO1uEmBPmeq8oqoJneQWAYLy }}
+        run: vercel --token --prod
