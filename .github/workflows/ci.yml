@@ -20,5 +20,5 @@ jobs:
     - name: Rodar teste JavaScript
       run: |
         echo "Testando arquivo TST.js..."
-        node -e "require('fs').readFileSync('.dist/TST.js'); console.log('✅ Arquivo TST.js existe e foi lido com sucesso');"
+        node -e "require('fs').readFileSync('.dist/test.js'); console.log('✅ Arquivo TST.js existe e foi lido com sucesso');"
         
