@@ -1,0 +1,23 @@
+name: HTML/JS CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Baixar código
+      uses: actions/checkout@v2
+
+   
+    - name: Instalar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    
+    - name: Rodar teste JavaScript
+      run: |
+        echo "Testando arquivo TST.js..."
+        node -e "require('fs').readFileSync('TST.js'); console.log('✅ Arquivo TST.js existe e foi lido com sucesso');"
