@@ -5,19 +5,14 @@ on:
   push:
     branches: [ main ]
 
+run: vercel --token --prod --yes
+
+run: vercel --token $VERCEL_TOKEN --prod --yes
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Vercel CLI
-      run: npm i -g vercel
-
-    - name: Deploy to Vercel
-      run: vercel --token ${{ secrets.aujguiNR0KcEu0pjKrTSWjm6 }} --prod --yes # Se der erro, pode tentar colocar --yes
-      env:
-        VERCEL_ORG_ID: ${{ secrets.VNYOfK6FxygWdi6VnRkRqZQw }}
-        VERCEL_PROJECT_ID: ${{ secrets.prj_hkJXOO1uEmBPmeq8oqoJneQWAYLy }}
-
+      - uses: actions/checkout@v3
+      - run: npm install -g vercel
+      - run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --yes
