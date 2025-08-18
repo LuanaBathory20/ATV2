@@ -1,23 +1,20 @@
-
 name: Deploy to Vercel
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main  # ou a branch que você quer disparar o deploy
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Install Vercel CLI
-      run: npm i -g vercel
+      - name: Install Vercel CLI
+        run: npm install -g vercel
 
-    - name: Deploy to Vercel
-      run: vercel --token ${{ secrets.aujguiNR0KcEu0pjKrTSWjm6 }} --prod --token # Se der erro, pode tentar colocar --yes
-      env:
-        VERCEL_ORG_ID: ${{ secrets.VNYOfK6FxygWdi6VnRkRqZQw }}
-        VERCEL_PROJECT_ID: ${{ secrets.prj_hkJXOO1uEmBPmeq8oqoJneQWAYLy }}
-
+      - name: Deploy to Vercel
+        run: vercel --prod --yes --token=aujguiNR0KcEu0pjKrTSWjm6
