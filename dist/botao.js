@@ -6,35 +6,30 @@ function iniciarBotaoTemporizado(segundosIniciais = 5) {
   if (!botao) throw new Error('Elemento #botao não encontrado');
   if (!mensagem) throw new Error('Elemento #mensagem não encontrado');
 
-  botao.disabled = true;
-
-  const habilitar = () => {
-    botao.textContent = 'Clique aqui!';
-    botao.disabled = false;
+  const acaoClique = () => {
+    mensagem.textContent = 'O botão foi clicado! 😏';
     botao.classList.add('ativo');
+    botao.disabled = true;
+    botao.textContent = 'Clique concluído!';
   };
 
-  // Listener de clique (mensagem do teste)
-  botao.addEventListener('click', () => {
-    mensagem.textContent = 'O botão foi clicado! 😏';
-  });
+  botao.addEventListener('click', acaoClique);
 
-  // Atalho para testes: se 0s, habilita na hora
   if (segundosIniciais <= 0) {
-    habilitar();
-    return;
+    return; // no teste, ele só configura o evento, sem esperar
   }
 
   let segundos = segundosIniciais;
-  botao.textContent = `Clique em ${segundos}s`;
+  botao.textContent = `Disponível em ${segundos}s`;
 
   const intervalo = setInterval(() => {
     segundos--;
     if (segundos <= 0) {
       clearInterval(intervalo);
-      habilitar();
+      botao.disabled = false;
+      botao.textContent = 'Agora pode clicar!';
     } else {
-      botao.textContent = `Clique em ${segundos}s`;
+      botao.textContent = `Disponível em ${segundos}s`;
     }
   }, 1000);
 }
