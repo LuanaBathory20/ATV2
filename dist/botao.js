@@ -16,7 +16,7 @@ function iniciarBotaoTemporizado(segundosIniciais = 5) {
   botao.addEventListener('click', acaoClique);
 
   if (segundosIniciais <= 0) {
-    return; // no teste, ele só configura o evento, sem esperar
+    return; // no teste, só configura o evento
   }
 
   let segundos = segundosIniciais;
@@ -34,4 +34,7 @@ function iniciarBotaoTemporizado(segundosIniciais = 5) {
   }, 1000);
 }
 
-module.exports = iniciarBotaoTemporizado;
+// 👉 Só exporta se estiver rodando no Node (Jest)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = iniciarBotaoTemporizado;
+}
