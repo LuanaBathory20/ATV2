@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/VNYOfK6FxygWdi6VnRkRqZQw
+        uses: actions/checkout@v3
 
       - name: Install Vercel CLI
         run: npm install -g vercel
